@@ -1,0 +1,66 @@
+@startuml
+namespace main {
+    interface Factory  {
+        + NewProduct(kind string) Product
+
+    }
+    class FactoryA << (S,Aquamarine) >> {
+        - newProduct(kind string) Product
+
+    }
+    class FactoryAbstract << (S,Aquamarine) >> {
+        - newProduct <font color=blue>func</font>(string) Product
+
+        + NewProduct(kind string) Product
+
+    }
+    class FactoryB << (S,Aquamarine) >> {
+        - newProduct(kind string) Product
+
+    }
+    interface Product  {
+        + Step1() 
+        + Step2() 
+        + Describe() 
+
+    }
+    class Product0FromA << (S,Aquamarine) >> {
+        + Step1() 
+        + Step2() 
+        + Describe() 
+
+    }
+    class Product1FromA << (S,Aquamarine) >> {
+        + Step1() 
+        + Step2() 
+        + Describe() 
+
+    }
+    class ProductXFromB << (S,Aquamarine) >> {
+        + Step1() 
+        + Step2() 
+        + Describe() 
+
+    }
+    class ProductYFromB << (S,Aquamarine) >> {
+        + Step1() 
+        + Step2() 
+        + Describe() 
+
+    }
+}
+
+"main.FactoryAbstract" <|.. "main.FactoryA"
+"main.FactoryAbstract" <|.. "main.FactoryB"
+
+"main.Factory" <|-- "main.FactoryAbstract"
+"main.Product" <|-- "main.Product0FromA"
+"main.Product" <|-- "main.Product1FromA"
+"main.Product" <|-- "main.ProductXFromB"
+"main.Product" <|-- "main.ProductYFromB"
+
+"main.Product0FromA" <-- "main.FactoryA"
+"main.Product1FromA" <-- "main.FactoryA"
+"main.ProductXFromB" <-- "main.FactoryB"
+"main.ProductYFromB" <-- "main.FactoryB"
+@enduml
