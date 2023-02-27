@@ -1,0 +1,24 @@
+@startuml
+namespace main {
+    class Adaptee << (S,Aquamarine) >> {
+        - isInvoked bool
+
+        + Invoke() 
+        + Process() 
+
+    }
+    class Adapter << (S,Aquamarine) >> {
+        - adaptee Adaptee
+
+        + Call() 
+
+    }
+    class Target << (S,Aquamarine) >> {
+        + Call() 
+
+    }
+}
+
+"main.Adaptee" <-- "main.Adapter"
+
+@enduml

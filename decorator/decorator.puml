@@ -1,0 +1,34 @@
+@startuml
+namespace main {
+    interface Component  {
+        + Operate() 
+
+    }
+    class ConcreteComponent << (S,Aquamarine) >> {
+        + Description string
+
+        + Operate() 
+
+    }
+    class ConcreteDecoratorA << (S,Aquamarine) >> {
+        + Operate() 
+
+    }
+    class ConcreteDecoratorB << (S,Aquamarine) >> {
+        + Operate() 
+
+    }
+    class Decorator << (S,Aquamarine) >> {
+        - decorated Component
+
+        + Operator() 
+
+    }
+}
+"main.Component" <|.. "main.ConcreteComponent"
+"main.Component" <|.. "main.Decorator"
+"main.Component" <-- "main.Decorator"
+"main.Decorator" <|-- "main.ConcreteDecoratorA"
+"main.Decorator" <|-- "main.ConcreteDecoratorB"
+
+@enduml

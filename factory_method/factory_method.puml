@@ -1,21 +1,21 @@
 @startuml
 namespace main {
     interface Factory  {
-        + NewProduct(kind string) Product
+        + FactoryMethod(kind string) Product
 
     }
     class FactoryA << (S,Aquamarine) >> {
-        - newProduct(kind string) Product
+        - factoryMethod(kind string) Product
 
     }
     class FactoryAbstract << (S,Aquamarine) >> {
-        - newProduct <font color=blue>func</font>(string) Product
+        - abstractedFactoryMethod <font color=blue>func</font>(string) Product
 
-        + NewProduct(kind string) Product
+        + FactoryMethod(kind string) Product
 
     }
     class FactoryB << (S,Aquamarine) >> {
-        - newProduct(kind string) Product
+        - factoryMethod(kind string) Product
 
     }
     interface Product  {
@@ -50,10 +50,11 @@ namespace main {
     }
 }
 
-"main.FactoryAbstract" <|.. "main.FactoryA"
-"main.FactoryAbstract" <|.. "main.FactoryB"
+"main.Factory" <|.. "main.FactoryAbstract"
+"main.FactoryAbstract" <|-- "main.FactoryA"
+"main.FactoryAbstract" <|-- "main.FactoryB"
 
-"main.Factory" <|-- "main.FactoryAbstract"
+
 "main.Product" <|-- "main.Product0FromA"
 "main.Product" <|-- "main.Product1FromA"
 "main.Product" <|-- "main.ProductXFromB"

@@ -1,15 +1,16 @@
 package main
 
 type Factory interface {
-	NewProduct(kind string) Product
+	FactoryMethod(string) Product
 }
 
-type FactoryAbstract struct {
-	newProduct func(string) Product
+type AbstractFactory struct {
+	// Factory
+	abstractedFactoryMethod func(string) Product
 }
 
-func (s FactoryAbstract) NewProduct(kind string) Product {
-	product := s.newProduct(kind)
+func (s AbstractFactory) FactoryMethod(kind string) Product {
+	product := s.abstractedFactoryMethod(kind)
 	product.Step1()
 	product.Step2()
 	return product

@@ -1,0 +1,36 @@
+@startuml
+namespace main {
+    class AbstractObject << (S,Aquamarine) >> {
+        - capsule Encapsulate
+
+        + Action() 
+
+    }
+    class ConcreteCapsuleA << (S,Aquamarine) >> {
+        + Method() 
+
+    }
+    class ConcreteCapsuleB << (S,Aquamarine) >> {
+        + Method() 
+
+    }
+    class ConcreteObject0 << (S,Aquamarine) >> {
+    }
+    class ConcreteObject1 << (S,Aquamarine) >> {
+    }
+    class ConcreteObject2 << (S,Aquamarine) >> {
+    }
+    interface Encapsulate  {
+        + Method() 
+
+    }
+}
+"main.AbstractObject" <|-- "main.ConcreteObject0"
+"main.AbstractObject" <|-- "main.ConcreteObject1"
+"main.AbstractObject" <|-- "main.ConcreteObject2"
+
+"main.Encapsulate" <|... "main.ConcreteCapsuleA"
+"main.Encapsulate" <|... "main.ConcreteCapsuleB"
+
+"main.Encapsulate" <-- "main.AbstractObject"
+@enduml

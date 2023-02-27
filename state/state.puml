@@ -1,0 +1,61 @@
+@startuml
+namespace main {
+    interface State  {
+        + OperateA() 
+        + OperateB() 
+        + OperateC() 
+
+    }
+    class StateA << (S,Aquamarine) >> {
+        - stateMachine *StateMachine
+
+        + OperateA() 
+        + OperateB() 
+        + OperateC() 
+
+    }
+    class StateB << (S,Aquamarine) >> {
+        - stateMachine *StateMachine
+
+        + OperateA() 
+        + OperateB() 
+        + OperateC() 
+
+    }
+    class StateC << (S,Aquamarine) >> {
+        - stateMachine *StateMachine
+
+        + OperateA() 
+        + OperateB() 
+        + OperateC() 
+
+    }
+    class StateD << (S,Aquamarine) >> {
+        - stateMachine *StateMachine
+
+        + OperateA() 
+        + OperateB() 
+        + OperateC() 
+
+    }
+    class StateMachine << (S,Aquamarine) >> {
+        - currentState State
+        - states []State
+
+        + Operate() 
+        + SetCurrentState(stateType StateType) 
+
+    }
+    class main.StateType << (T, #FF7700) >>  {
+    }
+}
+
+"main.State" <|.. "main.StateA"
+"main.State" <|.. "main.StateB"
+"main.State" <|.. "main.StateC"
+"main.State" <|.. "main.StateD"
+
+"main.State" <- "main.StateMachine"
+
+"__builtin__.int" #.. "main.StateType"
+@enduml

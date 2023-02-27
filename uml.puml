@@ -1,0 +1,26 @@
+@startuml
+namespace design_pattern {
+    class AbstractStruct << (S,Aquamarine) >> {
+        + Method <font color=blue>func</font>() 
+
+    }
+    interface Interface  {
+        + Method() 
+
+    }
+    class Property << (S,Aquamarine) >> {
+    }
+    class Struct << (S,Aquamarine) >> {
+        - property Property
+
+        + Method() 
+
+    }
+}
+"design_pattern.AbstractStruct" <|-- "embed" "design_pattern.Struct"
+
+"design_pattern.Interface" <|.. "impl" "design_pattern.Struct"
+
+"design_pattern.Property" <-- "field" "design_pattern.Struct"
+
+@enduml

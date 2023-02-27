@@ -1,0 +1,32 @@
+@startuml
+namespace main {
+    class ExtendA << (S,Aquamarine) >> {
+        - methodA() 
+
+    }
+    class ExtendB << (S,Aquamarine) >> {
+        - methodB() 
+
+    }
+    class ExtendC << (S,Aquamarine) >> {
+        - methodC() 
+        - hookC() 
+
+    }
+    class Template << (S,Aquamarine) >> {
+        + AbstractMethod <font color=blue>func</font>() 
+        + HookMethod <font color=blue>func</font>() 
+
+        + OriginalHookMethod() 
+        + CommonMethod0() 
+        + CommonMethod1() 
+        + Execute() 
+
+    }
+}
+"main.Template" <|-- "main.ExtendA"
+"main.Template" <|-- "main.ExtendB"
+"main.Template" <|-- "main.ExtendC"
+
+
+@enduml

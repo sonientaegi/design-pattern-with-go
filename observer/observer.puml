@@ -1,0 +1,34 @@
+@startuml
+namespace main {
+    class ConcretePublisher << (S,Aquamarine) >> {
+        - subscribers []Subscriber
+        - currentContext Context
+
+        + Subscribe(subscriber Subscriber) 
+        + Unsubscribe(subscriber Subscriber) 
+        + Notify() 
+
+    }
+    class ConcreteSubscriber << (S,Aquamarine) >> {
+        + Name string
+
+        + Update(context any) 
+
+    }
+    interface Publisher  {
+        + Subscribe( Subscriber) 
+        + Unsubscribe( Subscriber) 
+        + Notify() 
+
+    }
+    interface Subscriber  {
+        + Update( any) 
+
+    }
+}
+
+"main.Publisher" <|.. "main.ConcretePublisher"
+"main.Subscriber" <|.. "main.ConcreteSubscriber"
+"main.Subscriber" <-- "main.ConcretePublisher"
+
+@enduml

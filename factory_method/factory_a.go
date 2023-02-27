@@ -3,17 +3,17 @@ package main
 import "strings"
 
 type FactoryA struct {
-	FactoryAbstract
+	AbstractFactory
 }
 
 func NewFactoryA() Factory {
 	factory := FactoryA{}
-	factory.FactoryAbstract.newProduct = factory.newProduct
+	factory.AbstractFactory.abstractedFactoryMethod = factory.factoryMethod
 
 	return &factory
 }
 
-func (s *FactoryA) newProduct(kind string) Product {
+func (s *FactoryA) factoryMethod(kind string) Product {
 	var product Product
 	switch strings.ToLower(kind) {
 	case "0":

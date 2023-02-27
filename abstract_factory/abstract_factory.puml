@@ -1,71 +1,32 @@
 @startuml
-namespace component {
-    class DataType0 << (S,Aquamarine) >> {
-        - value1 string
-        - value2 string
-
-        + GetValue1() string
-        + GetValue2() string
-        + Describe() 
-
-    }
-    class DataType1 << (S,Aquamarine) >> {
-        + Value1 int
-        + Value2 int
-
-        + Describe() 
-
-    }
-    interface ObjectType  {
-        + Name() 
-
-    }
-}
-
-
 namespace factory_a {
     class FactoryA << (S,Aquamarine) >> {
-        + NewObject() component.ObjectType
-        + GetDataType0() component.DataType0
-        + SetDataType1(comp component.DataType1) 
-
-    }
-    class ObjectFromA << (S,Aquamarine) >> {
-        + Name() 
+        + NewObject() main.ObjectType
+        + GetDataType0() main.DataType0
+        + SetDataType1(comp main.DataType1) 
 
     }
 }
 
-"main.Factory" <|-- "factory_a.FactoryA"
-"component.ObjectType" <|-- "factory_a.ObjectFromA"
+"main.Factory" <|.. "factory_a.FactoryA"
 
 namespace factory_b {
     class FactoryB << (S,Aquamarine) >> {
-        + NewObject() component.ObjectType
-        + GetDataType0() component.DataType0
-        + SetDataType1(comp component.DataType1) 
-
-    }
-    class ObjectFromB << (S,Aquamarine) >> {
-        + Name() 
+        + NewObject() main.ObjectType
+        + GetDataType0() main.DataType0
+        + SetDataType1(comp main.DataType1) 
 
     }
 }
 
-"main.Factory" <|-- "factory_b.FactoryB"
-"component.ObjectType" <|-- "factory_b.ObjectFromB"
+"main.Factory" <|.. "factory_b.FactoryB"
 
 namespace main {
     interface Factory  {
-        + NewObject() component.ObjectType
-        + GetDataType0() component.DataType0
-        + SetDataType1(comp component.DataType1) 
+        + NewObject() main.ObjectType
+        + GetDataType0() main.DataType0
+        + SetDataType1(comp main.DataType1) 
 
     }
 }
-
-"component.DataType0" <-- "factory_a.FactoryA"
-"component.DataType1" <-- "factory_a.FactoryA"
-"component.DataType0" <-- "factory_b.FactoryB"
-"component.DataType1" <-- "factory_b.FactoryB"
 @enduml

@@ -1,0 +1,48 @@
+@startuml
+namespace main {
+    interface Command  {
+        + Execute() 
+
+    }
+    class ConcreteCommand << (S,Aquamarine) >> {
+        - receiver *Receiver
+
+        + Execute() 
+
+    }
+    class Invoker << (S,Aquamarine) >> {
+        - commands <font color=blue>chan</font> Command
+
+        + SetCommand(command Command) bool
+        + Run() 
+        + Stop() 
+
+    }
+    class InvokerTeminatCommand << (S,Aquamarine) >> {
+        - invoker *Invoker
+
+        + Execute() 
+
+    }
+    class Receiver << (S,Aquamarine) >> {
+        + Name string
+
+        + DoSomething() 
+
+    }
+    class Sender << (S,Aquamarine) >> {
+        - invoker *Invoker
+        - commandSet []Command
+
+        + Run() 
+
+    }
+}
+
+"main.Command" <|.. "main.ConcreteCommand"
+"main.Command" <|.. "main.InvokerTeminatCommand"
+
+"main.Command" <- "main.Invoker"
+'"main.Receiver" <-- "main.ConcreteCommand"
+'"main.Invoker" <-- "main.InvokerTeminatCommand"
+@enduml

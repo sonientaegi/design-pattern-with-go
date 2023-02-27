@@ -1,0 +1,43 @@
+@startuml
+namespace main {
+    class AbstractColleague << (S,Aquamarine) >> {
+        - mediator Mediator
+
+    }
+    interface Colleague  {
+        + OnEvent( Event,  string) 
+
+    }
+    class ConcreteColleagueA << (S,Aquamarine) >> {
+        + OnEvent(event Event, context string) 
+        + Callout() 
+
+    }
+    class ConcreteColleagueB << (S,Aquamarine) >> {
+        + OnEvent(event Event, context string) 
+        + Callout() 
+
+    }
+    class ConcreteMediator << (S,Aquamarine) >> {
+        + ColleagueA Colleague
+        + ColleagueB Colleague
+
+        + SetEvent(event Event, context string) 
+        + Callout() 
+
+    }
+    interface Mediator  {
+        + SetEvent( Event,  string)
+
+    }
+}
+"main.Colleague" <|.. "main.AbstractColleague"
+"main.AbstractColleague" <|-- "main.ConcreteColleagueA"
+"main.AbstractColleague" <|-- "main.ConcreteColleagueB"
+
+"main.Mediator" <-- "main.AbstractColleague"
+
+"main.Mediator" <|.. "main.ConcreteMediator"
+"main.Colleague" <--- "main.ConcreteMediator"
+'"__builtin__.int" #.. "main.Event"
+@enduml

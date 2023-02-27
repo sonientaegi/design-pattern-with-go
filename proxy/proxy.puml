@@ -1,0 +1,29 @@
+@startuml
+namespace main {
+    class Proxy << (S,Aquamarine) >> {
+        - realSubject RealSubject
+
+        + Method() 
+        + IsDone() bool
+
+    }
+    class RealSubject << (S,Aquamarine) >> {
+        - lock *sync.Mutex
+        - isDone bool
+
+        + Method() 
+        + IsDone() bool
+
+    }
+    interface Subject  {
+        + Method() 
+        + IsDone() bool
+
+    }
+}
+
+"main.Subject" <|.. "main.Proxy"
+"main.Subject" <|.. "main.RealSubject"
+"main.RealSubject" <- "main.Proxy"
+
+@enduml

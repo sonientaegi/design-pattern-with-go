@@ -1,0 +1,36 @@
+@startuml
+namespace main {
+    interface Acceptable  {
+        + Accept( Visitable) 
+
+    }
+    class ElementA << (S,Aquamarine) >> {
+        + Name string
+
+        + Accept(visitable Visitable) 
+
+    }
+    class ElementB << (S,Aquamarine) >> {
+        + Value int
+
+        + Accept(visitable Visitable) 
+
+    }
+    interface Visitable  {
+        + VisitElementA(a *ElementA) 
+        + VisitElementB(a *ElementB) 
+
+    }
+    class Visitor << (S,Aquamarine) >> {
+        + VisitElementA(element *ElementA) 
+        + VisitElementB(element *ElementB) 
+
+    }
+}
+
+"main.Acceptable" <|.. "main.ElementA"
+"main.Acceptable" <|.. "main.ElementB"
+"main.Visitable" <|.. "main.Visitor"
+"main.Visitable" *-* "main.Acceptable"
+
+@enduml

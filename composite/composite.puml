@@ -1,0 +1,32 @@
+@startuml
+namespace main {
+    interface Component  {
+        + Add(component Component) 
+        + Remove(component Component) 
+        + Operate() 
+
+    }
+    class Composite << (S,Aquamarine) >> {
+        - leaves []Component
+
+        + Name string
+
+        + Add(component Component) 
+        + Remove(component Component) 
+        + Operate() 
+
+    }
+    class Leaf << (S,Aquamarine) >> {
+        + Name string
+
+        + Add(component Component) 
+        + Remove(component Component) 
+        + Operate() 
+
+    }
+}
+
+"main.Component" <|.. "main.Composite"
+"main.Component" <|.. "main.Leaf"
+
+@enduml
