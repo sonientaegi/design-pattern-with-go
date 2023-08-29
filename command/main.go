@@ -18,11 +18,11 @@ func (s *ConcreteCommand) Execute() {
 	s.receiver.DoSomething()
 }
 
-type InvokerTeminatCommand struct {
+type InvokerTerminateCommand struct {
 	invoker *Invoker
 }
 
-func (s *InvokerTeminatCommand) Execute() {
+func (s *InvokerTerminateCommand) Execute() {
 	s.invoker.Stop()
 }
 
@@ -59,7 +59,7 @@ func main() {
 	commandA := ConcreteCommand{receiver: &receiverA}
 	commandB := ConcreteCommand{receiver: &receiverB}
 	commandC := ConcreteCommand{receiver: &receiverC}
-	commandX := InvokerTeminatCommand{invoker: &invoker}
+	commandX := InvokerTerminateCommand{invoker: &invoker}
 
 	sender := Sender{
 		invoker: &invoker,

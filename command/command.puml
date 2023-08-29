@@ -18,7 +18,7 @@ namespace main {
         + Stop() 
 
     }
-    class InvokerTeminatCommand << (S,Aquamarine) >> {
+    class InvokerTerminateCommand << (S,Aquamarine) >> {
         - invoker *Invoker
 
         + Execute() 
@@ -40,9 +40,9 @@ namespace main {
 }
 
 "main.Command" <|.. "main.ConcreteCommand"
-"main.Command" <|.. "main.InvokerTeminatCommand"
+"main.Command" <|.. "main.InvokerTerminateCommand"
 
 "main.Command" <- "main.Invoker"
 '"main.Receiver" <-- "main.ConcreteCommand"
-'"main.Invoker" <-- "main.InvokerTeminatCommand"
+'"main.Invoker" <-- "main.InvokerTerminateCommand"
 @enduml
